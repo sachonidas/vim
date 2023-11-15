@@ -15,40 +15,37 @@ Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'vim-airline/vim-airline-themes'
 Plug 'airblade/vim-gitgutter'
-
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
+
 Plug 'https://github.com/tc50cal/vim-terminal' " Vim Terminal
 Plug 'https://github.com/terryma/vim-multiple-cursors' " CTRL + N for multiple cursors
 Plug 'https://github.com/preservim/tagbar' " Tagbar for code navigation
 Plug 'https://github.com/phpactor/phpactor' " Tagbar for code navigation
 Plug 'https://github.com/stephpy/vim-php-cs-fixer' " Tagbar for code navigation
-Plug 'StanAngeloff/php.vim'
-" Include Phpactor
-Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
-
-" Require ncm2 and this plugin
-Plug 'ncm2/ncm2'
-Plug 'roxma/nvim-yarp'
-Plug 'phpactor/ncm2-phpactor'
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'neomake/neomake'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 
+" Plugins for PHP
+Plug 'StanAngeloff/php.vim'
+Plug 'phpactor/phpactor' ,  {'do': 'composer install', 'for': 'php'}
+
+" Autocompletion
+Plug 'ncm2/ncm2'
+Plug 'roxma/nvim-yarp'
+Plug 'phpactor/ncm2-phpactor'
+Plug 'neomake/neomake'
+
+
 " Plugins to autocompletion
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Or build from source code by using npm
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
-
 Plug 'dense-analysis/ale'
-
 Plug 'phpstan/vim-phpstan'
 
-
+" Find and search
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " Plugins VUE
 Plug 'posva/vim-vue'
@@ -57,17 +54,18 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 
 call plug#end()
 
-
+" Keymaps to open and close NerdTree 
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nmap <leader>t :TerminalSplit zsh
 
 
-
+" Icons for NERDTree 
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '~'
 
+" Toggle in the right bar with structure of file
 nmap <F8> :TagbarToggle<CR>
 
 :set completeopt-=preview " For No Previews
@@ -94,19 +92,17 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 let g:airline_powerline_fonts = 1
 let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-" let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:fzf_vim = {}
 let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
 
+" Key to launch nmap 
 let mapleader=" "
 
-
+" Search files with preview
 nmap <Leader>p :Files<CR>
 
-" Configuración básica para vim-gitgutter
+" Basic confi for vim-gitgutter
 let g:gitgutter_enabled = 1
 let g:gitgutter_sign_added = '▋'
 let g:gitgutter_sign_modified = '▎'
