@@ -1,4 +1,3 @@
-
 :set number
 :set relativenumber
 :set autoindent
@@ -15,6 +14,8 @@ Plug 'https://github.com/preservim/nerdtree' " NerdTree
 Plug 'https://github.com/tpope/vim-commentary' " For Commenting gcc & gc
 Plug 'https://github.com/vim-airline/vim-airline' " Status bar
 Plug 'vim-airline/vim-airline-themes'
+Plug 'airblade/vim-gitgutter'
+
 Plug 'https://github.com/ap/vim-css-color' " CSS Color Preview
 Plug 'https://github.com/rafi/awesome-vim-colorschemes' " Retro Scheme
 Plug 'https://github.com/ryanoasis/vim-devicons' " Developer Icons
@@ -37,12 +38,32 @@ Plug 'neomake/neomake'
 Plug 'jiangmiao/auto-pairs'
 Plug 'alvan/vim-closetag'
 
+" Plugins to autocompletion
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+" Or build from source code by using npm
+Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'npm ci'}
+
+Plug 'dense-analysis/ale'
+
+Plug 'phpstan/vim-phpstan'
+
+
+
+" Plugins VUE
+Plug 'posva/vim-vue'
+Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
 call plug#end()
 
 
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
+nmap <leader>t :TerminalSplit zsh
+
+
 
 let g:NERDTreeDirArrowExpandable = '+'
 let g:NERDTreeDirArrowCollapsible = '~'
@@ -69,13 +90,25 @@ set completeopt=noinsert,menuone,noselect
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" Configuration ariline
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='promptline'
-g:airline_symbols
+let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
+" let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:fzf_vim = {}
 let g:fzf_vim.preview_window = ['right,50%', 'ctrl-/']
+
 let mapleader=" "
 
 
 nmap <Leader>p :Files<CR>
+
+" Configuración básica para vim-gitgutter
+let g:gitgutter_enabled = 1
+let g:gitgutter_sign_added = '▋'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '▋'
+
